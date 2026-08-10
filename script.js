@@ -1,17 +1,20 @@
-function repondre() {
-  let question = document.getElementById("question").value;
-  let reponse = document.getElementById("reponse");
+const bouton = document.querySelector(".creer");
+const zone = document.getElementById("description");
 
-  if (question.trim() === "") {
-    reponse.innerHTML = "Pose une question d'abord.";
-    return;
-  }
 
-  reponse.innerHTML = "Senghor IA réfléchit...";
+bouton.addEventListener("click", function(){
 
-  setTimeout(() => {
-    reponse.innerHTML =
-      "Tu as demandé : " + question + "<br><br>" +
-      "Je suis Senghor IA. Je vais bientôt être connecté à une vraie intelligence artificielle.";
-  }, 1000);
-}
+    let texte = zone.value;
+
+    if(texte.trim() === ""){
+        alert("Décris d'abord ta vidéo.");
+        return;
+    }
+
+
+    alert(
+        "🎬 Senghor IA prépare ta vidéo :\n\n" 
+        + texte
+    );
+
+});
