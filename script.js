@@ -160,3 +160,19 @@ message.innerHTML =
 "✅ Bienvenue " + nom + " dans Senghor IA";
 
 }
+function ouvrirParametres(){
+
+document.getElementById("parametres").style.display = "block";
+
+}
+
+
+
+function changerMode(){
+
+document.body.style.background = "#000000";
+
+document.getElementById("infoParametre").innerHTML =
+"✅ Mode sombre activé pour Senghor IA";
+
+}
