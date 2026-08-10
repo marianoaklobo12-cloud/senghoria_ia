@@ -6,7 +6,7 @@ let projets = [];
 
 
 
-// CRÉER UNE VIDÉO
+// CRÉATION VIDÉO
 
 bouton.addEventListener("click", function(){
 
@@ -26,9 +26,8 @@ projets.push(texte);
 
 
 alert(
-"🎬 Senghor IA\n\n" +
-"Projet vidéo enregistré :\n\n" +
-texte
+"🎬 Senghor IA\n\nProjet vidéo enregistré :\n\n" 
++ texte
 );
 
 
@@ -41,14 +40,12 @@ texte
 
 function assistantIA(){
 
-
 let question =
 document.getElementById("questionIA").value;
 
 
 let reponse =
 document.getElementById("reponseIA");
-
 
 
 if(question.trim() === ""){
@@ -59,7 +56,6 @@ reponse.innerHTML =
 return;
 
 }
-
 
 
 reponse.innerHTML =
@@ -73,22 +69,19 @@ question;
 
 
 
-// SAUVEGARDER PROJET
+// PROJETS
 
 function sauverProjet(){
 
 
 if(projets.length === 0){
 
-
 document.getElementById("projets").innerHTML =
 "Aucun projet enregistré.";
-
 
 return;
 
 }
-
 
 
 document.getElementById("projets").innerHTML =
@@ -100,17 +93,58 @@ projets.join("<br>");
 
 
 
-// VOIR VIDEOS
+
+// VIDEOS
 
 function voirVideos(){
 
 
 if(projets.length === 0){
 
-
 document.getElementById("listeVideos").innerHTML =
 "Aucune vidéo pour le moment.";
 
+return;
+
+}
+
+
+document.getElementById("listeVideos").innerHTML =
+"🎬 Mes créations :<br>" +
+projets.join("<br>");
+
+}
+
+
+
+
+
+// COMPTE
+
+function ouvrirCompte(){
+
+document.getElementById("compte").style.display = "block";
+
+}
+
+
+
+
+function enregistrerCompte(){
+
+let nom =
+document.getElementById("nomUtilisateur").value;
+
+
+let message =
+document.getElementById("messageCompte");
+
+
+
+if(nom.trim() === ""){
+
+message.innerHTML =
+"Écris ton nom.";
 
 return;
 
@@ -118,8 +152,11 @@ return;
 
 
 
-document.getElementById("listeVideos").innerHTML =
-"🎬 Mes créations :<br>" +
-projets.join("<br>");
+localStorage.setItem("utilisateur", nom);
+
+
+
+message.innerHTML =
+"✅ Bienvenue " + nom + " dans Senghor IA";
 
 }
