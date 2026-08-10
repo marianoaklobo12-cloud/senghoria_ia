@@ -1,42 +1,82 @@
 body {
-  font-family: Arial, sans-serif;
-  text-align: center;
-  background: #f2f2f2;
-  margin: 0;
-  padding: 20px;
+    margin: 0;
+    padding: 15px;
+    font-family: Arial, sans-serif;
+    background: #020617;
+    color: white;
+    text-align: center;
 }
+
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+}
+
 
 h1 {
-  color: #333;
+    font-size: 30px;
+    margin: 0;
 }
 
-.chat {
-  background: white;
-  padding: 20px;
-  border-radius: 15px;
-  max-width: 400px;
-  margin: auto;
-  box-shadow: 0 0 10px #ccc;
+
+h2 {
+    font-size: 18px;
 }
 
-input {
-  width: 90%;
-  padding: 10px;
-  margin-bottom: 10px;
-  border-radius: 8px;
-  border: 1px solid #aaa;
-}
 
 button {
-  padding: 10px 20px;
-  border: none;
-  border-radius: 8px;
-  background: #333;
-  color: white;
-  cursor: pointer;
+    background: #06153b;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 12px;
+    font-size: 16px;
 }
 
-#reponse {
-  margin-top: 20px;
-  font-weight: bold;
+
+textarea {
+    width: 90%;
+    height: 150px;
+    padding: 15px;
+    font-size: 18px;
+    border-radius: 10px;
+    margin: 20px;
+}
+
+
+.creer {
+    width: 90%;
+    background: #005f9e;
+    font-size: 22px;
+}
+
+
+.cartes {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+
+.cartes div {
+    background: #030b20;
+    padding: 15px;
+    border-radius: 10px;
+}
+
+
+footer {
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 5px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #020617;
+    padding: 8px;
 }
