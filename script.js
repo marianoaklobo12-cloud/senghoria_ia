@@ -1,4 +1,3 @@
-
 const bouton = document.querySelector(".creer");
 const zone = document.getElementById("description");
 
@@ -8,14 +7,21 @@ bouton.addEventListener("click", function(){
     let texte = zone.value;
 
     if(texte.trim() === ""){
-        alert("Décris d'abord ta vidéo.");
+        alert("Décris d'abord la vidéo que tu veux créer.");
         return;
     }
 
-    alert("🎬 Senghor IA prépare ta vidéo :\n\n" + texte);
+    alert(
+        "🎬 Senghor IA\n\n" +
+        "Création de vidéo demandée :\n\n" +
+        texte +
+        "\n\n⏳ Préparation en cours..."
+    );
 
 });
 
+
+// Assistant IA
 
 function assistantIA(){
 
@@ -30,7 +36,7 @@ function assistantIA(){
 
 
     reponse.innerHTML =
-    "🤖 Senghor IA :\n\n" +
-    "J'ai reçu ta question : " + question +
-    "<br><br>Je prépare une réponse intelligente...";
+    "🤖 Senghor IA :<br><br>" +
+    "J'ai reçu : " + question +
+    "<br><br>Je vais préparer une réponse.";
 }
