@@ -1,42 +1,79 @@
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Senghor IA</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <link rel="manifest" href="manifest.json">
-  <link rel="stylesheet" href="style.css">
+<title>Senghor IA</title>
 
-  <meta name="theme-color" content="#333333">
+<link rel="stylesheet" href="style.css">
+<link rel="manifest" href="manifest.json">
+
 </head>
 
 <body>
 
-  <h1>🤖 Senghor IA</h1>
+<header>
+    <h1>🤖 Senghor IA</h1>
+    <h2>Studio de création vidéo IA</h2>
 
-  <div class="chat">
-    <input id="question" placeholder="Pose ta question...">
-    <button onclick="repondre()">Envoyer</button>
+    <button>🔒 Connexion / Inscription</button>
+</header>
 
-    <p id="reponse"></p>
-  </div>
 
-  <script src="script.js"></script>
+<textarea id="description" placeholder="Décris ta vidéo..."></textarea>
 
-  <script>
-    if ("serviceWorker" in navigator) {
-      window.addEventListener("load", () => {
-        navigator.serviceWorker.register("service-worker.js")
-          .then(() => {
-            console.log("Senghor IA PWA activée");
-          })
-          .catch((erreur) => {
-            console.log("Erreur service worker :", erreur);
-          });
-      });
-    }
-  </script>
+
+<button class="creer">
+🎬 Créer une vidéo
+</button>
+
+
+<section class="cartes">
+
+<div>
+<h3>💬 Assistant IA</h3>
+<p>Pose tes questions<br>
+Crée tes scénarios</p>
+</div>
+
+
+<div>
+<h3>🎬 Mes vidéos</h3>
+<p>Voir et lire<br>
+mes créations</p>
+</div>
+
+
+<div>
+<h3>📁 Mes projets</h3>
+<p>Sauvegarder<br>
+mes histoires</p>
+</div>
+
+
+<div>
+<h3>⚙ Paramètres</h3>
+<p>Configuration<br>
+de l'application</p>
+</div>
+
+
+</section>
+
+
+<footer>
+
+<button>🏠<br>Accueil</button>
+<button>✨<br>Créer</button>
+<button>🎬<br>Vidéos</button>
+<button>👤<br>Compte</button>
+
+</footer>
+
+
+<script src="script.js"></script>
 
 </body>
 </html>
