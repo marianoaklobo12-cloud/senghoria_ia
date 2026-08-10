@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,25 +12,37 @@
 
 </head>
 
+
 <body>
 
+
 <header>
-    <h1>🤖 Senghor IA</h1>
-    <h2>Studio de création vidéo IA</h2>
-    <button>🔒 Connexion / Inscription</button>
+
+<h1>🤖 Senghor IA</h1>
+<h2>Studio de création vidéo IA</h2>
+
+<button>
+🔒 Connexion / Inscription
+</button>
+
 </header>
 
 
+
 <textarea id="description" placeholder="Décris ta vidéo..."></textarea>
+
 
 <button class="creer">
 🎬 Créer une vidéo
 </button>
 
 
+
 <section class="cartes">
 
+
 <div>
+
 <h3>💬 Assistant IA</h3>
 
 <input id="questionIA" placeholder="Pose ta question...">
@@ -43,24 +56,52 @@ Envoyer
 </div>
 
 
+
 <div>
+
 <h3>🎬 Mes vidéos</h3>
-<p>Voir et lire<br>mes créations</p>
+
+<button onclick="voirVideos()">
+Voir mes créations
+</button>
+
+<p id="listeVideos"></p>
+
 </div>
 
 
+
+
 <div>
+
 <h3>📁 Mes projets</h3>
-<p>Sauvegarder<br>mes histoires</p>
+
+<button onclick="sauverProjet()">
+Sauvegarder projet
+</button>
+
+<p id="projets"></p>
+
 </div>
+
+
 
 
 <div>
+
 <h3>⚙ Paramètres</h3>
-<p>Configuration<br>de l'application</p>
+
+<p>
+Configuration de l'application
+</p>
+
 </div>
+
+
 
 </section>
+
+
 
 
 <footer>
@@ -73,7 +114,10 @@ Envoyer
 </footer>
 
 
+
 <script src="script.js"></script>
 
+
 </body>
+
 </html>
