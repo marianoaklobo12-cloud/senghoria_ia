@@ -4,19 +4,39 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Senghor IA</title>
+
   <link rel="manifest" href="manifest.json">
   <link rel="stylesheet" href="style.css">
+
+  <meta name="theme-color" content="#333333">
 </head>
 
 <body>
+
   <h1>🤖 Senghor IA</h1>
 
   <div class="chat">
     <input id="question" placeholder="Pose ta question...">
     <button onclick="repondre()">Envoyer</button>
+
     <p id="reponse"></p>
   </div>
 
   <script src="script.js"></script>
+
+  <script>
+    if ("serviceWorker" in navigator) {
+      window.addEventListener("load", () => {
+        navigator.serviceWorker.register("service-worker.js")
+          .then(() => {
+            console.log("Senghor IA PWA activée");
+          })
+          .catch((erreur) => {
+            console.log("Erreur service worker :", erreur);
+          });
+      });
+    }
+  </script>
+
 </body>
 </html>
