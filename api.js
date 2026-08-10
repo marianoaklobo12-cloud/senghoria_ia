@@ -1,3 +1,4 @@
+
 async function demanderIA(question) {
 
     let reponse =
@@ -8,15 +9,38 @@ async function demanderIA(question) {
     "🤖 Senghor IA réfléchit...";
 
 
-    // Connexion future avec le serveur IA
+    try {
 
-    setTimeout(() => {
+        let resultat = await fetch(
+            "https://TON_SERVEUR.com/assistant",
+            {
+                method: "POST",
+
+                headers: {
+                    "Content-Type": "application/json"
+                },
+
+                body: JSON.stringify({
+                    question: question
+                })
+            }
+        );
+
+
+        let donnees = await resultat.json();
+
 
         reponse.innerHTML =
-        "🤖 Senghor IA :\n\n" +
-        "Je prépare une réponse intelligente à : "
-        + question;
+        "🤖 Senghor IA :<br><br>" +
+        donnees.reponse;
 
-    }, 1500);
+
+    } catch(error) {
+
+
+        reponse.innerHTML =
+        "Erreur de connexion au serveur IA.";
+
+    }
 
 }
