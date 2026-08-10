@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -21,11 +22,29 @@
 <h1>🤖 Senghor IA</h1>
 <h2>Studio de création vidéo IA</h2>
 
-<button>
+
+<button onclick="ouvrirCompte()">
 🔒 Connexion / Inscription
 </button>
 
+
+<div id="compte" style="display:none;">
+
+<h3>👤 Mon compte</h3>
+
+<input id="nomUtilisateur" placeholder="Ton nom">
+
+<button onclick="enregistrerCompte()">
+Créer mon compte
+</button>
+
+<p id="messageCompte"></p>
+
+</div>
+
+
 </header>
+
 
 
 
@@ -35,6 +54,7 @@
 <button class="creer">
 🎬 Créer une vidéo
 </button>
+
 
 
 
@@ -54,6 +74,7 @@ Envoyer
 <p id="reponseIA"></p>
 
 </div>
+
 
 
 
@@ -104,11 +125,15 @@ Configuration de l'application
 
 
 
+
 <footer>
 
 <button>🏠<br>Accueil</button>
+
 <button>✨<br>Créer</button>
+
 <button>🎬<br>Vidéos</button>
+
 <button>👤<br>Compte</button>
 
 </footer>
