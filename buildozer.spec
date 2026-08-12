@@ -1,17 +1,32 @@
 [app]
-title = Senghor IA
+
+title = Senghoria IA
+
 package.name = senghoria
-package.domain = org.senghor
+
+package.domain = org.senghoria
+
 source.dir = .
-source.include_exts = py,png,jpg,kv,mp3,wav
+
+source.include_exts = py,png,jpg,kv,mp4,json
+
 version = 1.0
+
 requirements = python3,kivy
+
 orientation = portrait
 
-[buildozer]
-log_level = 2
-
-[android]
 android.api = 35
+
 android.minapi = 23
-android.build_tools_version = 35.0.0
+
+android.ndk = 25b
+
+android.build_tools_version = 37.0.0
+
+android.archs = arm64-v8a
+
+
+[buildozer]
+
+log_level = 2
