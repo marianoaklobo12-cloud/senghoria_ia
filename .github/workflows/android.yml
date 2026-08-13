@@ -7,23 +7,12 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
+    container:
+      image: kivy/buildozer:latest
+
     steps:
       - name: Télécharger le projet
         uses: actions/checkout@v4
-
-      - name: Installer Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.11'
-
-      - name: Installer Buildozer
-        run: |
-          pip install buildozer cython==0.29.37
-
-      - name: Installer dépendances Android
-        run: |
-          sudo apt update
-          sudo apt install -y git zip unzip openjdk-17-jdk
 
       - name: Construire APK
         run: |
