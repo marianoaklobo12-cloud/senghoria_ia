@@ -1,0 +1,10 @@
+{
+  "name": "Senghor IA",
+  "short_name": "Senghor IA",
+  "description": "Application intelligente Senghor IA",
+  "start_url": "index.html",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#333333",
+  "lang": "fr"
+}
