@@ -1,156 +1,86 @@
-
 <!DOCTYPE html>
 <html lang="fr">
-
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Senghor IA</title>
 
-<link rel="stylesheet" href="style.css">
 <link rel="manifest" href="manifest.json">
+<link rel="stylesheet" href="style.css">
 
 </head>
 
-
 <body>
 
+<div class="app">
 
 <header>
-
 <h1>🤖 Senghor IA</h1>
-<h2>Studio de création vidéo IA</h2>
+<p>Studio de création vidéo IA</p>
 
-
-<button onclick="ouvrirCompte()">
+<button class="login">
 🔒 Connexion / Inscription
 </button>
-
-
-<div id="compte" style="display:none;">
-
-<h3>👤 Mon compte</h3>
-
-<input id="nomUtilisateur" placeholder="Ton nom">
-
-<button onclick="enregistrerCompte()">
-Créer mon compte
-</button>
-
-<p id="messageCompte"></p>
-
-</div>
-
-
 </header>
 
 
+<section class="create-box">
 
+<input id="prompt" placeholder="Décris ta vidéo...">
 
-<textarea id="description" placeholder="Décris ta vidéo..."></textarea>
-
-
-<button class="creer">
+<button class="create">
 🎬 Créer une vidéo
 </button>
-
-
-
-
-<section class="cartes">
-
-
-<div>
-
-<h3>⚙ Paramètres</h3>
-
-<button onclick="ouvrirParametres()">
-Ouvrir paramètres
-</button>
-
-<div id="parametres" style="display:none;">
-
-<p>Mode application :</p>
-
-<button onclick="changerMode()">
-🌙 Mode sombre
-</button>
-
-<p id="infoParametre"></p>
-
-</div>
-
-  </div>
-
-
-
-
-<div>
-
-<h3>🎬 Mes vidéos</h3>
-
-<button onclick="voirVideos()">
-Voir mes créations
-</button>
-
-<p id="listeVideos"></p>
-
-</div>
-
-
-
-
-<div>
-
-<h3>📁 Mes projets</h3>
-
-<button onclick="sauverProjet()">
-Sauvegarder projet
-</button>
-
-<p id="projets"></p>
-
-</div>
-
-
-
-
-<div>
-
-<h3>⚙ Paramètres</h3>
-
-<p>
-Configuration de l'application
-</p>
-
-</div>
-
-
 
 </section>
 
 
+<section class="cards">
+
+<div class="card">
+<div class="icon">💬</div>
+<h2>Assistant IA</h2>
+<p>Pose tes questions<br>Crée tes scénarios</p>
+</div>
 
 
+<div class="card">
+<div class="icon">🎬</div>
+<h2>Mes vidéos</h2>
+<p>Voir et lire mes créations</p>
+</div>
 
-<footer>
+
+<div class="card">
+<div class="icon">📁</div>
+<h2>Mes projets</h2>
+<p>Sauvegarder mes histoires</p>
+</div>
+
+
+<div class="card">
+<div class="icon">⚙️</div>
+<h2>Paramètres</h2>
+<p>Configuration de l'application</p>
+</div>
+
+</section>
+
+
+<nav>
 
 <button>🏠<br>Accueil</button>
-
 <button>✨<br>Créer</button>
-
 <button>🎬<br>Vidéos</button>
-
 <button>👤<br>Compte</button>
 
-</footer>
+</nav>
 
 
+</div>
 
-<script src="script.js"></script>
 
+<script src="app.js"></script>
 
 </body>
-
 </html>
