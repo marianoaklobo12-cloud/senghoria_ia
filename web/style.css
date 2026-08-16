@@ -5,68 +5,74 @@ font-family:Arial,sans-serif;
 
 
 body{
-
 margin:0;
-background:#08152b;
+background:linear-gradient(180deg,#07152e,#102a56);
 color:white;
-
+min-height:100vh;
 }
 
 
 .app{
-
 max-width:500px;
 margin:auto;
 padding:20px;
-
+padding-bottom:90px;
 }
 
 
+
 header{
-
 text-align:center;
-
+position:relative;
 }
 
 
 .logo{
-
 width:120px;
-height:120px;
+animation:flotter 3s infinite;
+}
+
+
+@keyframes flotter{
+
+50%{
+transform:translateY(-8px);
+}
 
 }
+
 
 
 h1{
-
 font-size:35px;
-color:#00d9ff;
-
+color:#00e5ff;
 }
 
-
-header p{
-
-color:#ccc;
-
-}
 
 
 button{
 
 border:none;
-border-radius:15px;
-padding:12px;
+border-radius:18px;
+padding:14px;
 font-size:16px;
-cursor:pointer;
+transition:0.3s;
+}
+
+
+button:active{
+
+transform:scale(0.92);
 
 }
+
 
 
 .connexion{
 
 background:#2563eb;
 color:white;
+width:90%;
 
 }
 
@@ -74,19 +80,21 @@ color:white;
 
 .create-box{
 
-margin-top:30px;
+margin-top:25px;
 display:flex;
 gap:10px;
 
 }
 
 
+
 input{
 
 flex:1;
 padding:15px;
-border-radius:15px;
+border-radius:18px;
 border:none;
+font-size:16px;
 
 }
 
@@ -111,12 +119,22 @@ margin-top:30px;
 }
 
 
+
 .card{
 
-background:#12284d;
+background:rgba(255,255,255,0.1);
+border-radius:25px;
 padding:20px;
-border-radius:20px;
 text-align:center;
+backdrop-filter:blur(10px);
+
+}
+
+
+
+.card:hover{
+
+transform:translateY(-5px);
 
 }
 
@@ -124,7 +142,7 @@ text-align:center;
 
 .icon{
 
-font-size:40px;
+font-size:45px;
 
 }
 
@@ -136,20 +154,31 @@ position:fixed;
 bottom:0;
 left:0;
 right:0;
-
-background:#101f3d;
-
+background:#08152b;
 display:flex;
 justify-content:space-around;
-
 padding:10px;
+box-shadow:0 -5px 20px #000;
 
 }
+
 
 
 nav button{
 
 background:none;
+color:white;
+
+}
+
+
+
+.back{
+
+position:absolute;
+left:10px;
+top:10px;
+background:#2563eb;
 color:white;
 
 }
