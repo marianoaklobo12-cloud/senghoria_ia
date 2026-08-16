@@ -7,52 +7,101 @@
 <title>Senghor IA</title>
 
 <link rel="manifest" href="manifest.json">
-<meta name="theme-color" content="#000000">
-
 <link rel="stylesheet" href="style.css">
 
 </head>
 
 <body>
 
-<h1>🤖 Senghor IA</h1>
+<header>
+    <div class="logo">
+        🤖
+        <h1>Senghor IA</h1>
+    </div>
 
-<p>Créateur de vidéos avec intelligence artificielle</p>
+    <p class="slogan">
+        Studio intelligent de création vidéo IA
+    </p>
+</header>
 
-<input id="texte" type="text" placeholder="Décris ta vidéo">
+
+<section class="card">
+
+<h2>🎬 Créer une vidéo</h2>
+
+<textarea id="description"
+placeholder="Décris ta vidéo...
+Exemple : Un robot construit une ville futuriste"></textarea>
+
 
 <button onclick="creerVideo()">
-Créer la vidéo
+🚀 Créer avec IA
 </button>
+
 
 <div id="resultat"></div>
 
-<video controls width="100%">
-<source src="Senghor_episode_final.mp4" type="video/mp4">
-Votre navigateur ne supporte pas la vidéo.
-</video>
+</section>
+
+
+
+<section class="menu">
+
+<div class="bloc">
+<h2>🎞️ Mes vidéos</h2>
+<button onclick="ouvrirVideos()">
+Voir mes créations
+</button>
+</div>
+
+
+<div class="bloc">
+<h2>📁 Mes projets</h2>
+<button onclick="ouvrirProjets()">
+Sauvegarder un projet
+</button>
+</div>
+
+
+<div class="bloc">
+<h2>⚙️ Paramètres</h2>
+<button>
+Configuration
+</button>
+</div>
+
+
+</section>
+
+
+
+<nav>
+
+<button>
+🏠<br>
+Accueil
+</button>
+
+<button onclick="creerVideo()">
+✨<br>
+Créer
+</button>
+
+<button onclick="ouvrirVideos()">
+🎬<br>
+Vidéos
+</button>
+
+<button>
+👤<br>
+Compte
+</button>
+
+</nav>
+
 
 
 <script src="app.js"></script>
-
-
-<script>
-
-if ("serviceWorker" in navigator) {
-
-navigator.serviceWorker.register("service-worker.js")
-.then(() => {
-console.log("Senghor IA PWA activée");
-})
-
-.catch((erreur)=>{
-console.log(erreur);
-});
-
-}
-
-</script>
-
 
 </body>
 </html>

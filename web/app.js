@@ -1,57 +1,60 @@
 function creerVideo(){
 
-    let resultat = document.getElementById("resultat");
-
-    let duree = document.getElementById("duree").value;
+let texte=document.getElementById("description").value;
 
 
-    resultat.innerHTML =
-    "⏳ Senghor IA démarre...\nDurée scène : "
-    + duree + " secondes";
+if(texte==""){
+
+document.getElementById("resultat").innerHTML=
+"⚠️ Décris d'abord ta vidéo";
+
+return;
+
+}
 
 
-    fetch(
-    "http://127.0.0.1:8080/creer?duree=" + duree
-    )
-
-    .then(response => response.text())
+document.getElementById("resultat").innerHTML=
+"🤖 Senghor IA prépare ton scénario...";
 
 
-    .then(data => {
+setTimeout(()=>{
+
+document.getElementById("resultat").innerHTML=
+"✅ Scénario créé ! Génération des images et de la voix...";
+
+},2000);
 
 
-        if(data === "VIDEO_OK"){
+}
 
 
-            resultat.innerHTML =
-            "✅ Vidéo terminée !<br>" +
-            "Durée : " + duree +
-            " secondes";
+
+function ouvrirVideos(){
+
+alert(
+"🎬 Tes vidéos Senghor IA apparaîtront ici"
+);
+
+}
 
 
-        }
 
-        else{
+function ouvrirProjets(){
 
+alert(
+"📁 Projet sauvegardé dans Senghor IA"
+);
 
-            resultat.innerHTML =
-            "❌ Erreur moteur : " + data;
-
-
-        }
+}
 
 
-    })
 
+// Installation PWA
 
-    .catch(error => {
+if("serviceWorker" in navigator){
 
-
-        resultat.innerHTML =
-        "❌ Serveur Senghor IA non connecté";
-
-
-    });
-
+navigator.serviceWorker.register(
+"service-worker.js"
+);
 
 }
