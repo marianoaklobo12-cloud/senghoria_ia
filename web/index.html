@@ -1,119 +1,53 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Senghor IA</title>
 
-<style>
-body{
-background:#061329;
-color:white;
-font-family:Arial;
-text-align:center;
-}
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#000000">
 
-.cadre{
-background:#102744;
-margin:30px;
-padding:25px;
-border-radius:25px;
-}
-
-input{
-width:90%;
-padding:15px;
-border-radius:20px;
-font-size:18px;
-}
-
-button{
-background:#00bfff;
-color:white;
-border:0;
-padding:15px 25px;
-margin:10px;
-border-radius:25px;
-font-size:18px;
-}
-</style>
+<link rel="stylesheet" href="style.css">
 
 </head>
 
 <body>
 
-<div class="cadre">
-
 <h1>🤖 Senghor IA</h1>
 
-<h3>Studio de création vidéo IA</h3>
+<p>Créateur de vidéos avec intelligence artificielle</p>
 
-<input id="prompt" placeholder="Décris ta vidéo...">
+<input id="texte" type="text" placeholder="Décris ta vidéo">
 
-<br>
-
-<button onclick="lancerCreation()">
-➤ Créer une vidéo
+<button onclick="creerVideo()">
+Créer la vidéo
 </button>
 
-</div>
+<div id="resultat"></div>
+
+<video controls width="100%">
+<source src="Senghor_episode_final.mp4" type="video/mp4">
+Votre navigateur ne supporte pas la vidéo.
+</video>
+
+
+<script src="app.js"></script>
 
 
 <script>
 
-function lancerCreation(){
+if ("serviceWorker" in navigator) {
 
-let texte=document.getElementById("prompt").value;
+navigator.serviceWorker.register("service-worker.js")
+.then(() => {
+console.log("Senghor IA PWA activée");
+})
 
-
-let scenario={
-
-titre:texte,
-
-scenes:[
-
-{
-numero:1,
-description:"Introduction de l'histoire"
-},
-
-{
-numero:2,
-description:"Le héros commence son aventure"
-},
-
-{
-numero:3,
-description:"Un problème apparaît"
-},
-
-{
-numero:4,
-description:"Le héros cherche une solution"
-},
-
-{
-numero:5,
-description:"La construction avance"
-},
-
-{
-numero:6,
-description:"Fin de l'épisode"
-}
-
-]
-
-};
-
-
-localStorage.setItem(
-"scenario_senghor",
-JSON.stringify(scenario)
-);
-
-
-window.location="scenario.html";
-
+.catch((erreur)=>{
+console.log(erreur);
+});
 
 }
 
@@ -121,4 +55,4 @@ window.location="scenario.html";
 
 
 </body>
-</html
+</html>
