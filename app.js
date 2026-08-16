@@ -26,20 +26,14 @@ function verifierConnexion() {
         <h2>❌ Connexion Internet requise</h2>
 
         <p>
-        Aucun accès Internet détecté.
+        Vérifiez votre forfait Internet ou votre WiFi.
         </p>
 
-        <p>
-        Vérifiez votre forfait Internet ou votre connexion WiFi.
-        </p>
-
-        <button onclick="location.reload()" style="
+        <button onclick="location.reload()" 
+        style="
         padding:12px 25px;
-        border:none;
         border-radius:10px;
         background:#00d9ff;
-        color:#08152b;
-        font-size:16px;
         ">
         🔄 Réessayer
         </button>
@@ -49,26 +43,46 @@ function verifierConnexion() {
         `;
 
         return false;
-
     }
+
 
     return true;
 
 }
 
 
-// Vérification au démarrage
+
 window.addEventListener(
-    "load",
-    verifierConnexion
+"load",
+verifierConnexion
 );
 
 
-// Vérification si Internet coupe pendant l'utilisation
+
 window.addEventListener(
-    "offline",
-    verifierConnexion
+"offline",
+verifierConnexion
 );
+
+
+
+// =====================================
+// NAVIGATION SENGHOR IA
+// =====================================
+
+
+function ouvrirPage(page){
+
+    if(!verifierConnexion()){
+
+        return;
+
+    }
+
+
+    window.location.href = page;
+
+}
 
 
 
@@ -76,26 +90,44 @@ window.addEventListener(
 // BOUTON CREATION VIDEO
 // =====================================
 
-const boutonCreation = document.getElementById("creation");
+let creation =
+document.getElementById("creation");
 
 
-if (boutonCreation) {
+if(creation){
 
-    boutonCreation.addEventListener(
-        "click",
-        () => {
+    creation.onclick = function(){
 
-            if (!verifierConnexion()) {
+        ouvrirPage(
+        "parametres.html"
+        );
 
-                return;
-
-            }
-
-
-            window.location.href =
-            "parametres.html";
-
-        }
-    );
+    };
 
 }
+
+
+
+// =====================================
+// BOUTONS AUTOMATIQUES
+// =====================================
+
+
+document.querySelectorAll(
+"[data-page]"
+).forEach(
+
+bouton => {
+
+
+    bouton.onclick = function(){
+
+        ouvrirPage(
+        this.dataset.page
+        );
+
+    };
+
+
+}
+
