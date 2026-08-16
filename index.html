@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
 
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Senghor IA</title>
 
 <link rel="manifest" href="manifest.json">
+
 <link rel="stylesheet" href="style.css">
 
 </head>
@@ -21,31 +24,45 @@
 
 <header>
 
+
 <img src="logo.svg" class="logo">
 
+
 <div>
-<h1>Senghor IA</h1>
+
+<h1>🤖 Senghor IA</h1>
+
 <p>Studio de création vidéo IA</p>
+
 </div>
 
 
-<button class="login">
-🔒 Connexion / Inscription
+
+<button class="connexion">
+
+🔒 Connexion
+
 </button>
 
+
 </header>
+
 
 
 
 <section class="create-zone">
 
 
-<input id="prompt" 
-placeholder="Décris ta vidéo...">
+<input 
+id="prompt"
+placeholder="Décris ta vidéo..."
+>
 
 
 <button class="create">
+
 🎬 Créer une vidéo
+
 </button>
 
 
@@ -54,38 +71,77 @@ placeholder="Décris ta vidéo...">
 
 
 
+
 <section class="cards">
 
 
+
 <div class="card">
+
 <div class="icon">💬</div>
+
 <h2>Assistant IA</h2>
-<p>Pose tes questions<br>Crée tes scénarios</p>
+
+<p>
+Pose tes questions
+<br>
+Crée tes scénarios
+</p>
+
 </div>
 
 
 
+
+
 <div class="card">
+
 <div class="icon">🎬</div>
+
 <h2>Mes vidéos</h2>
-<p>Voir et lire mes créations</p>
+
+<p>
+Voir et lire mes créations
+</p>
+
 </div>
 
 
 
+
+
+
 <div class="card">
+
 <div class="icon">📁</div>
+
 <h2>Mes projets</h2>
-<p>Sauvegarder mes histoires</p>
+
+<p>
+Sauvegarder mes histoires
+</p>
+
 </div>
+
+
+
+
 
 
 
 <div class="card">
+
 <div class="icon">⚙️</div>
+
 <h2>Paramètres</h2>
-<p>Configuration application</p>
+
+<p>
+Durée, format, voix robot
+</p>
+
 </div>
+
+
 
 
 
@@ -97,31 +153,61 @@ placeholder="Décris ta vidéo...">
 
 <nav>
 
+
+
 <button>
-🏠<br>
+
+🏠
+
+<br>
+
 Accueil
+
 </button>
 
 
+
+
 <button>
-✨<br>
+
+✨
+
+<br>
+
 Créer
+
 </button>
 
 
+
+
 <button>
-🎬<br>
+
+🎬
+
+<br>
+
 Vidéos
+
 </button>
+
+
 
 
 <button>
-👤<br>
+
+👤
+
+<br>
+
 Compte
+
 </button>
+
 
 
 </nav>
+
 
 
 
@@ -129,7 +215,18 @@ Compte
 
 
 
+
+<!-- Système voix robot -->
+
+<script src="voix_robot.js"></script>
+
+
+<!-- Cœur application -->
+
 <script src="app.js"></script>
 
+
+
 </body>
+
 </html>
