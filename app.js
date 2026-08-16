@@ -1,40 +1,202 @@
-// Création vidéo
+// ================================
+// CŒUR SENGHOR IA
+// Connexion application -> serveur
+// ================================
 
-document.querySelector(".create").onclick = function(){
+
+const boutonCreation = document.querySelector(".create");
+
+
+
+boutonCreation.onclick = async function(){
+
 
 let texte = document.querySelector("#prompt").value;
 
-if(texte === ""){
 
-alert("Décris ta vidéo");
+
+if(texte.trim() === ""){
+
+alert("Décris ta vidéo d'abord");
 
 return;
 
 }
 
-alert(
-"Senghor IA crée ta vidéo :\n\n" + texte
+
+
+
+// Récupération des paramètres
+
+let parametres = localStorage.getItem(
+"SenghorParametres"
 );
 
+
+
+if(!parametres){
+
+
+alert(
+"Faites vos choix dans les paramètres d'abord"
+);
+
+
+window.location.href="parametres.html";
+
+
+return;
+
+
+}
+
+
+
+let choix = JSON.parse(parametres);
+
+
+
+
+
+let duree = choix.duree || "1 minute";
+
+let format = choix.format || "16:9";
+
+let voix = choix.voix || "robot calme";
+
+let musique = choix.musique || "sans musique";
+
+let langue = choix.langue || "fr";
+
+
+
+
+
+// Sauvegarde de la demande complète
+
+let demande = {
+
+
+texte: texte,
+
+duree: duree,
+
+format: format,
+
+voix: voix,
+
+musique: musique,
+
+langue: langue
+
+
 };
+
+
+
+localStorage.setItem(
+
+"DemandeVideo",
+
+JSON.stringify(demande)
+
+);
+
+
+
+
+
+alert(
+"🤖 Senghor IA prépare ta vidéo..."
+);
+
+
+
+
+
+try{
+
+
+let url =
+
+"http://localhost:8080/creer?" +
+
+new URLSearchParams(demande);
+
+
+
+
+
+let reponse = await fetch(url);
+
+
+
+let resultat = await reponse.text();
+
+
+
+alert(resultat);
+
+
+
+}
+
+catch(erreur){
+
+
+alert(
+"Erreur connexion au moteur Senghor IA"
+);
+
+
+console.log(erreur);
+
+
+}
+
+
+
+};
+
+
 
 
 
 // Connexion
 
-document.querySelector(".connexion").onclick=function(){
+const connexion = document.querySelector(".connexion");
+
+
+if(connexion){
+
+
+connexion.onclick=function(){
+
 
 alert(
-"Bienvenue dans Senghor IA\nConnexion bientôt disponible"
+"Bienvenue dans Senghor IA"
 );
+
 
 };
 
 
+}
 
-// Cartes de l'écran
 
-let cartes = document.querySelectorAll(".card");
+
+
+
+
+// Navigation cartes
+
+
+let cartes=document.querySelectorAll(".card");
+
+
+
+if(cartes.length>=4){
+
 
 
 cartes[0].onclick=function(){
@@ -44,6 +206,7 @@ window.location.href="assistant.html";
 };
 
 
+
 cartes[1].onclick=function(){
 
 window.location.href="videos.html";
@@ -51,11 +214,13 @@ window.location.href="videos.html";
 };
 
 
+
 cartes[2].onclick=function(){
 
 window.location.href="projets.html";
 
 };
+
 
 
 cartes[3].onclick=function(){
@@ -66,9 +231,21 @@ window.location.href="parametres.html";
 
 
 
-// Barre du bas
+}
+
+
+
+
+
+
+// Barre navigation
+
 
 let menu=document.querySelectorAll("nav button");
+
+
+
+if(menu.length>=4){
 
 
 menu[0].onclick=function(){
@@ -97,3 +274,6 @@ menu[3].onclick=function(){
 window.location.href="compte.html";
 
 };
+
+
+}
