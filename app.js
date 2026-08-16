@@ -1,221 +1,101 @@
-// ===============================
-// SENGHOR IA - CONTROLE PRINCIPAL
-// ===============================
+// =====================================
+// SENGHOR IA - CONTROLE CONNEXION
+// =====================================
 
+function verifierConnexion() {
 
-// Bouton créer vidéo
+    if (!navigator.onLine) {
 
-let boutonCreation = document.querySelector(".create");
+        document.body.innerHTML = `
 
+        <div style="
+        background:#08152b;
+        color:white;
+        height:100vh;
+        display:flex;
+        flex-direction:column;
+        justify-content:center;
+        align-items:center;
+        text-align:center;
+        font-family:Arial;
+        padding:20px;
+        ">
 
-if(boutonCreation){
+        <h1>🤖 Senghor IA</h1>
 
-boutonCreation.onclick = function(){
+        <h2>❌ Connexion Internet requise</h2>
 
-let prompt = document.querySelector("#prompt").value;
+        <p>
+        Aucun accès Internet détecté.
+        </p>
 
+        <p>
+        Vérifiez votre forfait Internet ou votre connexion WiFi.
+        </p>
 
-if(prompt.trim() === ""){
+        <button onclick="location.reload()" style="
+        padding:12px 25px;
+        border:none;
+        border-radius:10px;
+        background:#00d9ff;
+        color:#08152b;
+        font-size:16px;
+        ">
+        🔄 Réessayer
+        </button>
 
-alert("Décris ta vidéo avant de continuer");
+        </div>
 
-return;
+        `;
 
-}
+        return false;
 
+    }
 
-// Sauvegarde du prompt
-
-localStorage.setItem(
-"prompt_senghor",
-prompt
-);
-
-
-// Vérifier les paramètres
-
-let choix = localStorage.getItem(
-"choix_video"
-);
-
-
-if(!choix){
-
-alert(
-"Faites vos choix dans les paramètres d'abord"
-);
-
-
-window.location.href =
-"parametres.html";
-
-
-return;
-
-}
-
-
-// Lancer création
-
-lancerVideo();
-
-};
+    return true;
 
 }
 
 
-
-// ===============================
-// LANCEMENT MOTEUR
-// ===============================
-
-function lancerVideo(){
-
-
-let choix =
-JSON.parse(
-localStorage.getItem("choix_video")
+// Vérification au démarrage
+window.addEventListener(
+    "load",
+    verifierConnexion
 );
 
 
-alert(
-"🤖 Senghor IA commence la création..."
+// Vérification si Internet coupe pendant l'utilisation
+window.addEventListener(
+    "offline",
+    verifierConnexion
 );
 
 
-// Envoi au serveur
 
-fetch(
-"http://localhost:8080/creer"
-)
+// =====================================
+// BOUTON CREATION VIDEO
+// =====================================
 
-.then(
-response => response.text()
-)
+const boutonCreation = document.getElementById("creation");
 
-.then(
-resultat => {
 
+if (boutonCreation) {
 
-if(resultat === "VIDEO_OK"){
+    boutonCreation.addEventListener(
+        "click",
+        () => {
 
-alert(
-"✅ Vidéo terminée !"
-);
+            if (!verifierConnexion()) {
 
+                return;
 
-}else{
+            }
 
 
-alert(
-"❌ Erreur pendant la création"
-);
+            window.location.href =
+            "parametres.html";
 
-
-}
-
-
-})
-
-.catch(
-
-erreur => {
-
-alert(
-"Serveur Senghor IA non actif"
-);
-
-}
-
-);
-
-
-}
-
-
-
-// ===============================
-// CARTES ACCUEIL
-// ===============================
-
-
-let cartes =
-document.querySelectorAll(".card");
-
-
-if(cartes.length){
-
-
-cartes[0].onclick=function(){
-
-window.location.href="assistant.html";
-
-};
-
-
-cartes[1].onclick=function(){
-
-window.location.href="videos.html";
-
-};
-
-
-cartes[2].onclick=function(){
-
-window.location.href="projets.html";
-
-};
-
-
-cartes[3].onclick=function(){
-
-window.location.href="parametres.html";
-
-};
-
-
-}
-
-
-
-// ===============================
-// MENU BAS
-// ===============================
-
-
-let menu =
-document.querySelectorAll("nav button");
-
-
-if(menu.length){
-
-
-menu[0].onclick=function(){
-
-window.location.href="index.html";
-
-};
-
-
-menu[1].onclick=function(){
-
-window.location.href="scenario.html";
-
-};
-
-
-menu[2].onclick=function(){
-
-window.location.href="videos.html";
-
-};
-
-
-menu[3].onclick=function(){
-
-window.location.href="compte.html";
-
-};
-
+        }
+    );
 
 }
