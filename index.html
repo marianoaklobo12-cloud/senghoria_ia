@@ -2,105 +2,257 @@
 <html lang="fr">
 
 <head>
+
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Senghor IA</title>
 
+
 <link rel="manifest" href="manifest.json">
+
+<meta name="theme-color" content="#00d9ff">
+
+
 <link rel="stylesheet" href="style.css">
+
 
 </head>
 
+
 <body>
 
-<div class="container">
+
+<div class="app">
+
+
+<header>
 
 <img src="logo.svg" class="logo">
 
-<h1>Senghor IA</h1>
 
-<h2>Studio de création vidéo IA</h2>
+<h1>🤖 Senghor IA</h1>
 
 
-<button class="btn">
-🔐 Connexion / Inscription
+<p>
+Studio de création vidéo IA
+</p>
+
+
+<button class="connexion">
+🔒 Connexion / Inscription
 </button>
 
 
-<div class="creation">
+</header>
 
-<textarea placeholder="Décris ta vidéo..."></textarea>
 
-<button class="btn">
+
+
+<section class="create-box">
+
+
+<input 
+id="prompt"
+placeholder="Décris ta vidéo..."
+>
+
+
+<button class="create">
+
 🎬 Créer une vidéo
+
 </button>
 
-</div>
-
-
-
-<section>
-
-<h2>⚙️ Paramètres</h2>
-
-<button class="btn">
-Ouvrir paramètres
-</button>
 
 </section>
 
 
 
-<section>
 
-<h2>🎬 Mes vidéos</h2>
 
-<button class="btn">
+<section class="cards">
+
+
+
+<div class="card">
+
+<div class="icon">🤖</div>
+
+<h2>Assistant IA</h2>
+
+<p>
+Créer des scénarios<br>
+Discuter avec l'IA
+</p>
+
+</div>
+
+
+
+
+<div class="card">
+
+<div class="icon">🎬</div>
+
+<h2>Mes vidéos</h2>
+
+<p>
 Voir mes créations
-</button>
-
-</section>
-
-
-
-<section>
-
-<h2>📁 Mes projets</h2>
-
-<button class="btn">
-Sauvegarder projet
-</button>
-
-</section>
-
-
-
-<section>
-
-<h2>⚙️ Configuration de l'application</h2>
-
-</section>
-
-
-
-<div class="menu">
-
-<button>🏠<br>Accueil</button>
-
-<button>✨<br>Créer</button>
-
-<button>🎬<br>Vidéos</button>
-
-<button>👤<br>Compte</button>
+</p>
 
 </div>
 
 
+
+
+
+<div class="card">
+
+<div class="icon">📁</div>
+
+<h2>Mes projets</h2>
+
+<p>
+Sauvegarder mes histoires
+</p>
+
 </div>
+
+
+
+
+
+<div class="card">
+
+<div class="icon">⚙️</div>
+
+<h2>Paramètres</h2>
+
+<p>
+Configuration application
+</p>
+
+</div>
+
+
+
+
+</section>
+
+
+
+
+
+<nav>
+
+
+<button>
+
+🏠
+
+<br>
+
+Accueil
+
+</button>
+
+
+
+<button>
+
+✨
+
+<br>
+
+Créer
+
+</button>
+
+
+
+
+<button>
+
+🎬
+
+<br>
+
+Vidéos
+
+</button>
+
+
+
+
+<button>
+
+👤
+
+<br>
+
+Compte
+
+</button>
+
+
+
+</nav>
+
+
+
+</div>
+
+
 
 
 <script src="app.js"></script>
+
+
+
+<script>
+
+
+// Activation PWA Senghor IA
+
+if ("serviceWorker" in navigator) {
+
+
+window.addEventListener("load", function(){
+
+
+navigator.serviceWorker.register("service-worker.js")
+
+
+.then(function(){
+
+
+console.log("Senghor IA PWA activée");
+
+
+})
+
+
+.catch(function(error){
+
+
+console.log("Erreur PWA :", error);
+
+
+});
+
+
+});
+
+
+}
+
+
+
+</script>
+
+
 
 </body>
 
