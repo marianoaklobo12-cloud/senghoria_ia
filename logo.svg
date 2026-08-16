@@ -1,0 +1,25 @@
+<svg width="300" height="300" xmlns="http://www.w3.org/2000/svg">
+
+<rect width="300" height="300" rx="60" fill="#111"/>
+
+<circle cx="150" cy="120" r="70" fill="#00d9ff"/>
+
+<rect x="90" y="80" width="120" height="90" rx="20" fill="#fff"/>
+
+<circle cx="125" cy="120" r="12" fill="#111"/>
+<circle cx="175" cy="120" r="12" fill="#111"/>
+
+<rect x="125" y="145" width="50" height="10" rx="5" fill="#111"/>
+
+<line x1="150" y1="50" x2="150" y2="25" stroke="#fff" stroke-width="8"/>
+<circle cx="150" cy="20" r="10" fill="#ffcc00"/>
+
+<text x="150" y="240"
+font-size="32"
+text-anchor="middle"
+fill="white"
+font-family="Arial">
+SENGHOR IA
+</text>
+
+</svg>
