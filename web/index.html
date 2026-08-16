@@ -3,7 +3,6 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Senghor IA</title>
 
 <link rel="manifest" href="manifest.json">
@@ -13,92 +12,72 @@
 
 <body>
 
-<header>
-    <div class="logo">
-        🤖
-        <h1>Senghor IA</h1>
-    </div>
+<div class="app">
 
-    <p class="slogan">
-        Studio intelligent de création vidéo IA
-    </p>
+<header>
+<h1>🤖 Senghor IA</h1>
+<p>Studio de création vidéo IA</p>
+
+<button class="login">
+🔒 Connexion / Inscription
+</button>
 </header>
 
 
-<section class="card">
+<section class="create-box">
 
-<h2>🎬 Créer une vidéo</h2>
+<input id="prompt" placeholder="Décris ta vidéo...">
 
-<textarea id="description"
-placeholder="Décris ta vidéo...
-Exemple : Un robot construit une ville futuriste"></textarea>
-
-
-<button onclick="creerVideo()">
-🚀 Créer avec IA
+<button class="create">
+🎬 Créer une vidéo
 </button>
-
-
-<div id="resultat"></div>
 
 </section>
 
 
+<section class="cards">
 
-<section class="menu">
-
-<div class="bloc">
-<h2>🎞️ Mes vidéos</h2>
-<button onclick="ouvrirVideos()">
-Voir mes créations
-</button>
+<div class="card">
+<div class="icon">💬</div>
+<h2>Assistant IA</h2>
+<p>Pose tes questions<br>Crée tes scénarios</p>
 </div>
 
 
-<div class="bloc">
-<h2>📁 Mes projets</h2>
-<button onclick="ouvrirProjets()">
-Sauvegarder un projet
-</button>
+<div class="card">
+<div class="icon">🎬</div>
+<h2>Mes vidéos</h2>
+<p>Voir et lire mes créations</p>
 </div>
 
 
-<div class="bloc">
-<h2>⚙️ Paramètres</h2>
-<button>
-Configuration
-</button>
+<div class="card">
+<div class="icon">📁</div>
+<h2>Mes projets</h2>
+<p>Sauvegarder mes histoires</p>
 </div>
 
+
+<div class="card">
+<div class="icon">⚙️</div>
+<h2>Paramètres</h2>
+<p>Configuration de l'application</p>
+</div>
 
 </section>
-
 
 
 <nav>
 
-<button>
-🏠<br>
-Accueil
-</button>
-
-<button onclick="creerVideo()">
-✨<br>
-Créer
-</button>
-
-<button onclick="ouvrirVideos()">
-🎬<br>
-Vidéos
-</button>
-
-<button>
-👤<br>
-Compte
-</button>
+<button>🏠<br>Accueil</button>
+<button>✨<br>Créer</button>
+<button>🎬<br>Vidéos</button>
+<button>👤<br>Compte</button>
 
 </nav>
 
+
+</div>
 
 
 <script src="app.js"></script>
