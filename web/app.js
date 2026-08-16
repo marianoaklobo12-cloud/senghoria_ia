@@ -1,124 +1,123 @@
-// Senghor IA - Gestion des boutons
+// Senghor IA - Gestion complète des boutons
+
+document.addEventListener("DOMContentLoaded", function(){
+
 
 // Bouton créer vidéo
-document.querySelector(".create").onclick = function(){
+const boutonCreation = document.querySelector(".create");
 
-    let texte = document.querySelector("#prompt").value;
+boutonCreation.onclick = function(){
 
-    if(texte === ""){
-        alert("Décris ta vidéo avant de commencer");
-        return;
-    }
+let texte = document.querySelector("#prompt").value;
 
-    localStorage.setItem("scenario", texte);
+if(texte.trim() === ""){
 
-    alert(
-    "🤖 Senghor IA prépare ton scénario :\n\n" 
-    + texte
-    );
+alert("🤖 Décris d'abord ta vidéo");
 
-    window.location.href="scenario.html";
+return;
+
+}
+
+alert(
+"🎬 Senghor IA commence la création...\n\nScénario :\n" + texte
+);
+
+// sauvegarde du projet
+localStorage.setItem("dernier_projet", texte);
 
 };
+
 
 
 // Connexion
-document.querySelector(".login").onclick=function(){
+const connexion = document.querySelector(".login");
 
-    alert(
-    "🔐 Connexion Senghor IA\n\n" +
-    "Création de compte bientôt disponible"
-    );
-
-};
-
-
-// Cartes
-
-let cartes=document.querySelectorAll(".card");
-
-
-// Assistant IA
-cartes[0].onclick=function(){
+connexion.onclick = function(){
 
 alert(
-"💬 Assistant IA\n\n" +
-"Pose tes questions et crée tes histoires."
+"👤 Connexion Senghor IA\n\nCompte utilisateur bientôt disponible."
 );
 
 };
 
 
-// Mes vidéos
-cartes[1].onclick=function(){
 
-window.location.href="Senghor_episode_final.mp4";
+// Cartes de l'accueil
+
+const cartes = document.querySelectorAll(".card");
+
+cartes[0].onclick = function(){
+
+alert(
+"💬 Assistant IA\n\nPose tes questions et crée tes scénarios."
+);
 
 };
 
 
-// Mes projets
-cartes[2].onclick=function(){
+cartes[1].onclick = function(){
 
 window.location.href="projets.html";
 
 };
 
 
-// Paramètres
-cartes[3].onclick=function(){
+cartes[2].onclick = function(){
+
+window.location.href="projets.html";
+
+};
+
+
+cartes[3].onclick = function(){
 
 alert(
-"⚙️ Paramètres\n\n" +
-"Langue : Français\n" +
-"Version : Senghor IA 1.0"
+"⚙️ Paramètres\n\nConfiguration Senghor IA."
 );
 
 };
 
 
-// Navigation du bas
 
-let nav=document.querySelectorAll("nav button");
+
+// Barre de navigation en bas
+
+const navigation = document.querySelectorAll("nav button");
 
 
 // Accueil
-nav[0].onclick=function(){
+navigation[0].onclick=function(){
+
 window.location.href="index.html";
+
 };
 
 
 // Créer
-nav[1].onclick=function(){
+navigation[1].onclick=function(){
+
 document.querySelector("#prompt").focus();
+
 };
 
 
 // Vidéos
-nav[2].onclick=function(){
-window.location.href="Senghor_episode_final.mp4";
+navigation[2].onclick=function(){
+
+window.location.href="projets.html";
+
 };
 
 
 // Compte
-nav[3].onclick=function(){
+navigation[3].onclick=function(){
 
 alert(
-"👤 Compte Senghor IA\n\n" +
-"Connexion bientôt disponible"
+"👤 Compte Senghor IA"
 );
 
 };
 
 
-// Chargement scénario existant
 
-let ancien =
-localStorage.getItem("scenario");
-
-
-if(ancien){
-
-document.querySelector("#prompt").value=ancien;
-
-}
+});
