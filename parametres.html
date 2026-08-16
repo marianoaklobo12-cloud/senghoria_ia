@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Paramètres Senghor IA</title>
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body>
+
+
+<div class="app">
+
+
+<h1>⚙️ Paramètres Senghor IA</h1>
+
+
+<p id="message">
+Faites vos choix d'abord
+</p>
+
+
+
+<h2>🎬 Assemblage vidéo</h2>
+
+
+<div class="card">
+
+<p>
+Sélectionne les vidéos à assembler
+</p>
+
+
+<input 
+type="file"
+id="videos"
+multiple
+accept="video/*"
+>
+
+
+<div id="listeVideos"></div>
+
+
+<button id="assembler">
+
+🎬 Assembler les vidéos
+
+</button>
+
+
+</div>
+
+
+
+
+
+<h2>⏱ Durée</h2>
+
+
+<div class="card">
+
+<button class="choix" data-type="duree" data-value="30 secondes">
+30 secondes
+</button>
+
+
+<button class="choix" data-type="duree" data-value="1 minute">
+1 minute
+</button>
+
+
+<button class="choix" data-type="duree" data-value="1 minute 30">
+1 minute 30
+</button>
+
+
+<button class="choix" data-type="duree" data-value="3 minutes">
+3 minutes
+</button>
+
+
+</div>
+
+
+
+
+
+<h2>📱 Format</h2>
+
+
+<div class="card">
+
+
+<button class="choix" data-type="format" data-value="9:16">
+TikTok 9:16
+</button>
+
+
+<button class="choix" data-type="format" data-value="16:9">
+YouTube 16:9
+</button>
+
+
+<button class="choix" data-type="format" data-value="1:1">
+Carré 1:1
+</button>
+
+
+</div>
+
+
+
+
+
+<h2>🤖 Voix robot</h2>
+
+
+<div class="card">
+
+
+<button class="choix" data-type="voix" data-value="joyeux">
+Robot joyeux
+</button>
+
+
+<button class="choix" data-type="voix" data-value="amusant">
+Robot amusant
+</button>
+
+
+<button class="choix" data-type="voix" data-value="geant">
+Robot géant
+</button>
+
+
+<button class="choix" data-type="voix" data-value="calme">
+Robot calme
+</button>
+
+
+</div>
+
+
+
+
+
+<h2>🎵 Musique</h2>
+
+
+<div class="card">
+
+
+<input 
+id="rechercheMusique"
+placeholder="🔍 Rechercher une musique"
+>
+
+
+<button class="choix"
+data-type="musique"
+data-value="aventure">
+
+🎵 Aventure
+
+</button>
+
+
+<button class="choix"
+data-type="musique"
+data-value="amusante">
+
+🎵 Amusante
+
+</button>
+
+
+<button class="choix"
+data-type="musique"
+data-value="epique">
+
+🎵 Épique
+
+</button>
+
+
+<button class="choix"
+data-type="musique"
+data-value="calme">
+
+🎵 Calme
+
+</button>
+
+
+</div>
+
+
+
+
+<button id="termine">
+
+✅ Terminé
+
+</button>
+
+
+
+</div>
+
+
+
+<script src="parametres.js"></script>
+
+
+</body>
+
+</html>
