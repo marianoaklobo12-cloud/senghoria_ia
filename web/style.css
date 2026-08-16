@@ -1,186 +1,155 @@
+*{
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+
 body{
 
 margin:0;
+background:#08152b;
+color:white;
 
-font-family:Arial, sans-serif;
+}
 
-background:#f2f2f2;
 
-color:#111;
+.app{
+
+max-width:500px;
+margin:auto;
+padding:20px;
+
+}
+
+
+header{
 
 text-align:center;
 
 }
 
 
-.container{
-
-max-width:500px;
-
-margin:auto;
-
-padding:20px;
-
-}
-
-
-
 .logo{
 
-width:160px;
-
-height:160px;
-
-margin-top:20px;
-
-animation:flottement 3s infinite;
+width:120px;
+height:120px;
 
 }
-
-
-
-@keyframes flottement{
-
-0%{
-transform:translateY(0);
-}
-
-50%{
-transform:translateY(-12px);
-}
-
-100%{
-transform:translateY(0);
-}
-
-}
-
 
 
 h1{
 
-font-size:40px;
-
-margin:10px;
-
-}
-
-
-
-h2{
-
-font-size:26px;
-
-margin:25px 0;
+font-size:35px;
+color:#00d9ff;
 
 }
 
 
+header p{
 
-.btn{
+color:#ccc;
 
-background:#333;
+}
 
-color:white;
+
+button{
 
 border:none;
-
 border-radius:15px;
+padding:12px;
+font-size:16px;
+cursor:pointer;
 
-padding:15px 25px;
+}
 
-font-size:18px;
 
-margin:10px;
+.connexion{
+
+background:#2563eb;
+color:white;
 
 }
 
 
 
-.creation{
+.create-box{
 
+margin-top:30px;
 display:flex;
-
-justify-content:center;
-
-align-items:center;
-
 gap:10px;
 
 }
 
 
+input{
 
-textarea{
+flex:1;
+padding:15px;
+border-radius:15px;
+border:none;
 
-width:230px;
+}
 
-height:60px;
 
-font-size:18px;
+
+.create{
+
+background:#00c853;
+color:white;
+
+}
+
+
+
+.cards{
+
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:15px;
+margin-top:30px;
+
+}
+
+
+.card{
+
+background:#12284d;
+padding:20px;
+border-radius:20px;
+text-align:center;
+
+}
+
+
+
+.icon{
+
+font-size:40px;
+
+}
+
+
+
+nav{
+
+position:fixed;
+bottom:0;
+left:0;
+right:0;
+
+background:#101f3d;
+
+display:flex;
+justify-content:space-around;
 
 padding:10px;
 
 }
 
 
+nav button{
 
-section{
-
-margin-top:25px;
-
-}
-
-
-
-.menu{
-
-display:flex;
-
-justify-content:center;
-
-gap:8px;
-
-margin-top:40px;
-
-}
-
-
-
-.menu button{
-
-background:#333;
-
+background:none;
 color:white;
-
-border:none;
-
-border-radius:12px;
-
-padding:12px;
-
-font-size:16px;
-
-width:85px;
-
-}
-
-
-
-@media(max-width:600px){
-
-h1{
-
-font-size:34px;
-
-}
-
-.logo{
-
-width:140px;
-
-height:140px;
-
-}
 
 }
