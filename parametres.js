@@ -1,27 +1,130 @@
-let choix = {};
+// =====================================
+// SENGHOR IA - PARAMETRES VIDEO
+// =====================================
 
 
-document.querySelectorAll(".choix").forEach(bouton=>{
+// Valeurs par défaut
+
+let choixVideo = {
+
+format: "",
+duree: "",
+langue: "",
+voix: "",
+musique: "",
+assemblage: false
+
+};
+
+
+
+// Charger les anciens choix
+
+let ancien =
+localStorage.getItem("choix_video");
+
+
+if(ancien){
+
+choixVideo = JSON.parse(ancien);
+
+}
+
+
+
+// Fonction sauvegarde
+
+function sauvegarder(){
+
+localStorage.setItem(
+"choix_video",
+JSON.stringify(choixVideo)
+);
+
+}
+
+
+
+// Fonction bouton terminé
+
+function terminerBouton(bouton){
+
+bouton.innerHTML = "Terminé ✅";
+
+bouton.style.opacity = "0.7";
+
+}
+
+
+
+// FORMAT
+
+document.querySelectorAll(".format").forEach(
+
+bouton => {
+
+bouton.onclick = function(){
+
+choixVideo.format =
+this.dataset.value ||
+this.innerText;
+
+
+terminerBouton(this);
+
+sauvegarder();
+
+};
+
+});
+
+
+
+
+// DURÉE
+
+document.querySelectorAll(".duree").forEach(
+
+bouton => {
+
+bouton.onclick=function(){
+
+
+choixVideo.duree =
+this.dataset.value ||
+this.innerText;
+
+
+terminerBouton(this);
+
+sauvegarder();
+
+
+};
+
+});
+
+
+
+
+// LANGUE
+
+document.querySelectorAll(".langue").forEach(
+
+bouton=>{
 
 
 bouton.onclick=function(){
 
 
-let type=this.dataset.type;
-
-let valeur=this.dataset.value;
-
-
-choix[type]=valeur;
+choixVideo.langue =
+this.dataset.value ||
+this.innerText;
 
 
-localStorage.setItem(
-"SenghorParametres",
-JSON.stringify(choix)
-);
+terminerBouton(this);
 
-
-this.style.background="#00eaff";
+sauvegarder();
 
 
 };
@@ -32,72 +135,111 @@ this.style.background="#00eaff";
 
 
 
+// VOIX ROBOT
 
-document.querySelector("#videos").onchange=function(){
+document.querySelectorAll(".voix").forEach(
 
-
-let liste=document.querySelector("#listeVideos");
-
-liste.innerHTML="";
+bouton=>{
 
 
-for(let video of this.files){
+bouton.onclick=function(){
 
-let p=document.createElement("p");
 
-p.innerHTML="🎬 "+video.name;
+choixVideo.voix =
+this.dataset.value ||
+this.innerText;
 
-liste.appendChild(p);
+
+terminerBouton(this);
+
+sauvegarder();
+
+
+};
+
+
+});
+
+
+
+
+// MUSIQUE
+
+document.querySelectorAll(".musique").forEach(
+
+bouton=>{
+
+
+bouton.onclick=function(){
+
+
+choixVideo.musique =
+this.dataset.value ||
+this.innerText;
+
+
+terminerBouton(this);
+
+sauvegarder();
+
+
+};
+
+
+});
+
+
+
+
+// ASSEMBLAGE VIDEO
+
+let assemblage =
+document.querySelector("#assemblage");
+
+
+if(assemblage){
+
+
+assemblage.onclick=function(){
+
+
+choixVideo.assemblage = true;
+
+
+this.innerHTML =
+"Assemblage activé ✅";
+
+
+sauvegarder();
+
+
+};
 
 }
 
 
-};
+
+// BOUTON RETOUR
+
+let retour =
+document.querySelector("#retour");
 
 
+if(retour){
 
-
-
-document.querySelector("#assembler").onclick=function(){
-
-
-alert(
-"Préparation assemblage de "+
-document.querySelector("#videos").files.length+
-" vidéos"
-);
-
-
-localStorage.setItem(
-"assemblage",
-"demande"
-);
-
-
-};
-
-
-
-
-
-document.querySelector("#termine").onclick=function(){
-
-
-localStorage.setItem(
-"SenghorParametres",
-JSON.stringify(choix)
-);
-
-
-document.querySelector("#message").innerHTML=
-"✅ Terminé";
-
-
-setTimeout(()=>{
+retour.onclick=function(){
 
 window.location.href="index.html";
 
-},1000);
-
-
 };
+
+}
+
+
+
+// Vérification
+
+console.log(
+"Senghor IA paramètres :",
+choixVideo
+);
