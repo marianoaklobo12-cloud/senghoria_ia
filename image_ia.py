@@ -1,53 +1,89 @@
-from PIL import Image, ImageDraw
 import os
+from PIL import Image, ImageDraw, ImageFont
 
 
-def creer_image(description, numero):
+DOSSIER = "episode_senghor"
 
-    dossier = "images"
 
-    if not os.path.exists(dossier):
-        os.makedirs(dossier)
+def creer_images_ia(scenes):
 
-    largeur = 1280
-    hauteur = 720
-
-    image = Image.new(
-        "RGB",
-        (largeur, hauteur),
-        (15, 35, 80)
+    os.makedirs(
+        DOSSIER,
+        exist_ok=True
     )
 
-    dessin = ImageDraw.Draw(image)
 
-    texte = "Senghor IA\n\n" + description
+    print("🖼️ Création des images IA...")
 
-    dessin.text(
-        (100, 250),
-        texte,
-        fill=(255,255,255)
+
+
+    for scene in scenes:
+
+
+        numero = scene["numero"]
+
+        titre = scene["titre"]
+
+        description = scene["description"]
+
+
+
+        image = Image.new(
+            "RGB",
+            (1280,720),
+            (10,20,50)
+        )
+
+
+        dessin = ImageDraw.Draw(image)
+
+
+
+        texte = (
+
+            "SENGHOR IA\n\n"
+
+            f"SCENE {numero}\n\n"
+
+            f"{titre}\n\n"
+
+            f"{description}"
+
+        )
+
+
+
+        dessin.text(
+
+            (80,120),
+
+            texte,
+
+            fill=(0,220,255)
+
+        )
+
+
+
+        chemin = (
+
+            f"{DOSSIER}/scene{numero}.png"
+
+        )
+
+
+
+        image.save(chemin)
+
+
+
+        print(
+            "✅ Image créée :",
+            chemin
+        )
+
+
+
+    print(
+        "🚀 Images IA terminées"
     )
-
-    fichier = f"{dossier}/scene{numero}.png"
-
-    image.save(fichier)
-
-    print("🖼️ Image créée :", fichier)
-
-
-# Lecture automatique du prompt
-if os.path.exists("texte_scene.txt"):
-
-    with open("texte_scene.txt","r",encoding="utf-8") as f:
-        description = f.read()
-
-else:
-    description = "Une scène de film IA"
-
-
-# Création de plusieurs scènes
-for i in range(1,6):
-    creer_image(description, i)
-
-
-print("✅ Images générées automatiquement")
