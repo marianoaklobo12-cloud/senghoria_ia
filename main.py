@@ -4,7 +4,7 @@ from kivy.uix.gridlayout import GridLayout
 from kivy.uix.button import Button
 from kivy.uix.label import Label
 from kivy.uix.textinput import TextInput
-from kivy.graphics import Color, RoundedRectangle
+from kivy.uix.scrollview import ScrollView
 from kivy.core.window import Window
 
 
@@ -18,106 +18,178 @@ class Carte(Button):
         self.color = (0.5, 0.8, 1, 1)
 
 
-class SenghorAccueil(BoxLayout):
+class ParametresPage(BoxLayout):
 
-    def __init__(self, **kwargs):
-        super().__init__(orientation="vertical",
-                         spacing=15,
-                         padding=20,
-                         **kwargs)
-
-        # En-tête
-        haut = BoxLayout(size_hint_y=0.15)
+    def __init__(self, retour, **kwargs):
+        super().__init__(
+            orientation="vertical",
+            spacing=10,
+            padding=20,
+            **kwargs
+        )
 
         titre = Label(
-            text="[b]Senghor[/b]\nStudio de création vidéo IA",
+            text="[b]⚙ PARAMÈTRES SENGHOR IA[/b]",
+            markup=True,
+            font_size=24,
+            color=(0.2,0.8,1,1),
+            size_hint_y=0.12
+        )
+
+        self.add_widget(titre)
+
+        scroll = ScrollView()
+
+        liste = BoxLayout(
+            orientation="vertical",
+            spacing=10,
+            size_hint_y=None
+        )
+
+        liste.bind(minimum_height=liste.setter("height"))
+
+        options = [
+            "👤 Profil utilisateur",
+            "🎨 Apparence",
+            "🤖 Intelligence Artificielle",
+            "🎙️ Voix IA",
+            "🎬 Vidéo",
+            "🎵 Audio",
+            "📁 Stockage",
+            "🔐 Compte",
+            "🌐 Réseau",
+            "ℹ️ À propos"
+        ]
+
+        for option in options:
+            bouton = Button(
+                text=option,
+                size_hint_y=None,
+                height=60,
+                background_color=(0.05,0.15,0.3,1)
+            )
+            liste.add_widget(bouton)
+
+        scroll.add_widget(liste)
+        self.add_widget(scroll)
+
+
+        retour_btn = Button(
+            text="⬅ Retour Accueil",
+            size_hint_y=0.12
+        )
+
+        retour_btn.bind(on_press=retour)
+
+        self.add_widget(retour_btn)
+
+
+
+class SenghorAccueil(BoxLayout):
+
+    def __init__(self, changer_page, **kwargs):
+
+        super().__init__(
+            orientation="vertical",
+            spacing=15,
+            padding=20,
+            **kwargs
+        )
+
+        titre = Label(
+            text="[b]Senghor IA[/b]\nStudio de création vidéo IA",
             markup=True,
             font_size=24,
             color=(0.2,0.8,1,1)
         )
 
-        connexion = Button(
-            text="🔒 Connexion / Inscription",
-            size_hint_x=0.4,
-            background_color=(0.05,0.15,0.3,1)
-        )
+        self.add_widget(titre)
 
-        haut.add_widget(titre)
-        haut.add_widget(connexion)
-
-        self.add_widget(haut)
-
-
-        # Zone description vidéo
-        zone = BoxLayout(
-            orientation="vertical",
-            spacing=10,
-            size_hint_y=0.35
-        )
 
         self.video = TextInput(
             hint_text="Décris ta vidéo...",
             multiline=True,
-            background_color=(0.08,0.12,0.25,1),
-            foreground_color=(1,1,1,1)
+            size_hint_y=0.25
         )
+
+        self.add_widget(self.video)
+
 
         creer = Button(
-            text="🎬  CRÉER UNE VIDÉO",
-            size_hint_y=0.3,
-            background_color=(0,0.7,1,1)
+            text="🎬 CRÉER UNE VIDÉO",
+            size_hint_y=0.15
         )
 
-        zone.add_widget(self.video)
-        zone.add_widget(creer)
-
-        self.add_widget(zone)
+        self.add_widget(creer)
 
 
-        # Cartes principales
         grille = GridLayout(
             cols=2,
-            spacing=12,
-            size_hint_y=0.35
+            spacing=10
         )
 
+
+        param = Carte(
+            text="⚙ Paramètres"
+        )
+
+        param.bind(
+            on_press=lambda x: changer_page("param")
+        )
+
+
         boutons = [
-            ("🤖 Assistant IA\nCréer scénarios"),
-            ("🎬 Mes vidéos\nVoir mes créations"),
-            ("📁 Mes projets\nSauvegarder histoires"),
-            ("⚙ Paramètres\nConfiguration")
+            "🤖 Assistant IA",
+            "🎙️ Voix IA",
+            "🎥 Mes vidéos",
+            "📁 Mes projets"
         ]
 
+
         for b in boutons:
-            grille.add_widget(Carte(text=b))
+            grille.add_widget(
+                Carte(text=b)
+            )
+
+
+        grille.add_widget(param)
 
         self.add_widget(grille)
 
 
-        # Barre du bas
-        bas = GridLayout(
-            cols=4,
-            size_hint_y=0.12
+
+class SenghorApp(App):
+
+    def build(self):
+
+        self.accueil = SenghorAccueil(
+            self.changer_page
         )
 
-        for nom in ["🏠 Accueil",
-                    "✨ Créer",
-                    "🎥 Vidéos",
-                    "👤 Compte"]:
-            bas.add_widget(
-                Button(
-                    text=nom,
-                    background_color=(0.05,0.1,0.2,1)
+        return self.accueil
+
+
+    def changer_page(self, page):
+
+        if page == "param":
+
+            self.root.clear_widgets()
+
+            self.root.add_widget(
+                ParametresPage(
+                    self.retour_accueil
                 )
             )
 
-        self.add_widget(bas)
 
+    def retour_accueil(self, instance):
 
+        self.root.clear_widgets()
 
-class SenghorApp(App):
-    def build(self):
-        return SenghorAccueil()
+        self.root.add_widget(
+            self.accueil
+        )
+
 
 
 if __name__ == "__main__":

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Senghor IA</title>
+
+<style>
+body{
+background:#061329;
+color:white;
+font-family:Arial;
+text-align:center;
+}
+
+.cadre{
+background:#102744;
+margin:30px;
+padding:25px;
+border-radius:25px;
+}
+
+input{
+width:90%;
+padding:15px;
+border-radius:20px;
+font-size:18px;
+}
+
+button{
+background:#00bfff;
+color:white;
+border:0;
+padding:15px 25px;
+margin:10px;
+border-radius:25px;
+font-size:18px;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="cadre">
+
+<h1>🤖 Senghor IA</h1>
+
+<h3>Studio de création vidéo IA</h3>
+
+<input id="prompt" placeholder="Décris ta vidéo...">
+
+<br>
+
+<button onclick="lancerCreation()">
+➤ Créer une vidéo
+</button>
+
+</div>
+
+
+<script>
+
+function lancerCreation(){
+
+let texte=document.getElementById("prompt").value;
+
+
+let scenario={
+
+titre:texte,
+
+scenes:[
+
+{
+numero:1,
+description:"Introduction de l'histoire"
+},
+
+{
+numero:2,
+description:"Le héros commence son aventure"
+},
+
+{
+numero:3,
+description:"Un problème apparaît"
+},
+
+{
+numero:4,
+description:"Le héros cherche une solution"
+},
+
+{
+numero:5,
+description:"La construction avance"
+},
+
+{
+numero:6,
+description:"Fin de l'épisode"
+}
+
+]
+
+};
+
+
+localStorage.setItem(
+"scenario_senghor",
+JSON.stringify(scenario)
+);
+
+
+window.location="scenario.html";
+
+
+}
+
+</script>
+
+
+</body>
+</html

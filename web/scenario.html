@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta charset="UTF-8">
+<title>Senghor IA</title>
+
+<style>
+
+body{
+background:#050b20;
+color:white;
+font-family:Arial;
+text-align:center;
+}
+
+.carte{
+background:#102040;
+margin:15px;
+padding:20px;
+border-radius:20px;
+}
+
+button{
+background:#00aaff;
+color:white;
+border:0;
+padding:12px;
+margin:5px;
+border-radius:15px;
+font-size:16px;
+}
+
+textarea{
+width:90%;
+height:100px;
+border-radius:15px;
+padding:10px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+
+<h1>🤖 Senghor IA</h1>
+
+<div class="carte">
+
+<h2>🎬 Scène 1</h2>
+
+<textarea id="descriptionScene">
+Turbo construit une ville futuriste avec Titan
+</textarea>
+
+
+<br>
+
+
+<button onclick="preparerImage()">
+🖼️ Créer Image IA
+</button>
+
+
+<button onclick="preparerVoix()">
+🎙️ Créer Voix Robot
+</button>
+
+
+<p id="resultat"></p>
+
+</div>
+
+
+
+<div class="carte">
+
+<h2>🤖 Voix IA Robot</h2>
+
+
+<button onclick="choisirVoix('Robot futuriste')">
+🤖 Robot futuriste
+</button>
+
+
+<button onclick="choisirVoix('Robot métallique')">
+🤖 Robot métallique
+</button>
+
+
+<button onclick="choisirVoix('Robot spatial')">
+🤖 Robot spatial
+</button>
+
+
+<br>
+
+
+<textarea id="texteRobot"
+placeholder="Texte du robot">
+</textarea>
+
+
+</div>
+
+
+
+<script>
+
+
+let voix="Robot futuriste";
+
+
+
+function choisirVoix(nom){
+
+voix=nom;
+
+localStorage.setItem(
+"voix_robot",
+nom
+);
+
+document.getElementById("resultat").innerHTML=
+"✅ Voix choisie : "+nom;
+
+}
+
+
+
+function preparerVoix(){
+
+let texte=
+document.getElementById("texteRobot").value;
+
+
+if(texte==""){
+
+texte="Bonjour, je suis le robot de Senghor IA";
+
+}
+
+
+localStorage.setItem(
+"texte_robot_senghor",
+texte
+);
+
+
+document.getElementById("resultat").innerHTML=
+"✅ Voix prête : "+voix;
+
+}
+
+
+
+function preparerImage(){
+
+let description=
+document.getElementById("descriptionScene").value;
+
+
+localStorage.setItem(
+"scene_image_senghor",
+description
+);
+
+
+document.getElementById("resultat").innerHTML=
+"✅ Image prête : "+description;
+
+}
+
+
+
+</script>
+
+
+</body>
+</html>

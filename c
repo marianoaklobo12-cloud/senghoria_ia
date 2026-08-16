@@ -1,39 +1,98 @@
+from http.server import HTTPServer, BaseHTTPRequestHandler
+import subprocess
+import urllib.parse
+import os
 
 
-rm buildozer.spec
-
-cat > buildozer.spec <<'EOF'
-[app]
-
-title = Senghor
-
-package.name = senghor
-package.domain = org.senghor
-
-source.dir = .
-
-source.include_exts = py,png,jpg,jpeg,mp3,wav,mp4,json
-
-version = 1.0
-
-requirements = python3,kivy,pillow,gtts,moviepy,imageio,imageio-ffmpeg
-
-orientation = portrait
-
-fullscreen = 0
-
-android.permissions = INTERNET,WRITE_EXTERNAL_STORAGE,READ_EXTERNAL_STORAGE
-
-android.api = 35
-
-android.minapi = 23
-
-android.archs = arm64-v8a
+DOSSIER = "/home/userland/Senghor_IA/episode_senghor"
 
 
-[buildozer]
+class ServeurSenghor(BaseHTTPRequestHandler):
 
-log_level = 2
+    def do_GET(self):
 
-warn_on_root = 0
-EOF
+        url = urllib.parse.urlparse(self.path)
+
+        if url.path == "/creer":
+
+            parametres = urllib.parse.parse_qs(url.query)
+
+            duree = parametres.get(
+                "duree",
+                ["10"]
+            )[0]
+
+
+            print(
+                "🎬 Création vidéo durée :",
+                duree,
+                "secondes"
+            )
+
+
+            script = os.path.join(
+                DOSSIER,
+                "montage_musique.sh"
+            )
+
+
+            try:
+
+                resultat = subprocess.run(
+                    [
+                        "bash",
+                        script,
+                        duree
+                    ],
+                    cwd=DOSSIER,
+                    capture_output=True,
+                    text=True
+                )
+
+
+                if resultat.returncode == 0:
+
+                    reponse = "VIDEO_OK"
+
+                else:
+
+                    reponse = resultat.stderr
+
+
+            except Exception as e:
+
+                reponse = str(e)
+
+
+            self.send_response(200)
+
+            self.send_header(
+                "Access-Control-Allow-Origin",
+                "*"
+            )
+
+            self.end_headers()
+
+            self.wfile.write(
+                reponse.encode()
+            )
+
+
+        else:
+
+            self.send_response(404)
+
+            self.end_headers()
+
+
+
+serveur = HTTPServer(
+    ("0.0.0.0",8080),
+    ServeurSenghor
+)
+
+
+print("Serveur Senghor IA actif")
+
+
+serveur.serve_forever()

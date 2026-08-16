@@ -1,0 +1,16 @@
+file '/home/userland/Senghor_IA/images/scene1.png'
+duration 5
+file '/home/userland/Senghor_IA/images/scene2.png'
+duration 5
+file '/home/userland/Senghor_IA/images/scene3.png'
+duration 5
+file '/home/userland/Senghor_IA/images/scene4.png'
+duration 5
+file '/home/userland/Senghor_IA/images/scene5.png'
+duration 5
+file '/home/userland/Senghor_IA/images/scene6.png'
+duration 5
+file '/home/userland/Senghor_IA/images/scene7.png'
+duration 5
+file '/home/userland/Senghor_IA/images/scene8.png'
+duration 5
