@@ -1,12 +1,16 @@
 import os
 import json
 import subprocess
-from gtts import gTTS
+
 from PIL import Image, ImageDraw
+
+from voix_robot import creer_voix
+
 
 
 DOSSIER = "episode_senghor"
 VIDEO = "Senghor_episode.mp4"
+
 
 
 def charger_demande():
@@ -24,21 +28,30 @@ def charger_demande():
             return json.load(f)
 
 
+
     return {
 
-        "texte": "Robot dans une ville futuriste",
+        "texte":
+        "Un robot construit une ville futuriste",
 
-        "duree": "1 minute",
+        "duree":
+        "1 minute",
 
-        "format": "16:9",
+        "format":
+        "16:9",
 
-        "voix": "robot calme",
+        "voix":
+        "robot amusant",
 
-        "musique": "aventure",
+        "musique":
+        "aventure",
 
-        "langue": "fr"
+        "langue":
+        "fr"
 
     }
+
+
 
 
 
@@ -51,13 +64,12 @@ def creer_dossier():
 
 
 
+
+
 def creer_scenes(demande):
 
 
-    idee = demande["texte"]
-
-
-    print("🎬 Création des scènes...")
+    texte = demande["texte"]
 
 
     scenes = [
@@ -82,6 +94,9 @@ def creer_scenes(demande):
 
 
 
+    print("🎬 Création des scènes...")
+
+
     for i,titre in enumerate(scenes,1):
 
 
@@ -100,7 +115,7 @@ def creer_scenes(demande):
 
 
 
-        texte = (
+        contenu = (
 
             "SENGHOR IA\n\n"
 
@@ -108,7 +123,7 @@ def creer_scenes(demande):
 
             f"{titre}\n\n"
 
-            f"{idee}"
+            f"{texte}"
 
         )
 
@@ -117,7 +132,7 @@ def creer_scenes(demande):
 
             (100,150),
 
-            texte,
+            contenu,
 
             fill=(0,220,255)
 
@@ -133,42 +148,47 @@ def creer_scenes(demande):
 
 
 
-    print("✅ Scènes créées")
+    print("✅ Scènes terminées")
 
 
 
 
-def creer_voix(demande):
+
+
+
+def creer_voix_robot(demande):
+
+
+    print("🎙 Création voix robot...")
+
+
+    fichier = creer_voix(
+
+        demande["texte"],
+
+        demande.get(
+            "voix",
+            "robot calme"
+        ),
+
+        demande.get(
+            "langue",
+            "fr"
+        )
+
+    )
 
 
     print(
-        "🎙 Voix robot :",
-        demande["voix"]
+        "✅ Voix :",
+        fichier
     )
 
 
-    texte = demande["texte"]
+    return fichier
 
 
 
-    voix = gTTS(
-
-        text=texte,
-
-        lang=demande["langue"]
-
-    )
-
-
-    voix.save(
-
-        f"{DOSSIER}/robot.mp3"
-
-    )
-
-
-
-    print("✅ Voix créée")
 
 
 
@@ -177,13 +197,7 @@ def creer_voix(demande):
 def creer_video(demande):
 
 
-    print(
-
-        "🎥 Format :",
-
-        demande["format"]
-
-    )
+    print("🎥 Montage vidéo...")
 
 
     commande = [
@@ -219,10 +233,13 @@ def creer_video(demande):
     )
 
 
+
     print(
         "✅ Vidéo créée :",
         VIDEO
     )
+
+
 
 
 
@@ -252,11 +269,6 @@ def lancer():
     )
 
     print(
-        "Durée :",
-        demande["duree"]
-    )
-
-    print(
         "Voix :",
         demande["voix"]
     )
@@ -266,21 +278,32 @@ def lancer():
         demande["musique"]
     )
 
+    print(
+        "Format :",
+        demande["format"]
+    )
+
 
 
     creer_dossier()
 
     creer_scenes(demande)
 
-    creer_voix(demande)
+    creer_voix_robot(demande)
 
     creer_video(demande)
 
 
 
+    print("="*40)
+
     print(
-        "🚀 PRODUCTION TERMINÉE"
+        "🚀 PRODUCTION TERMINEE"
     )
+
+    print("="*40)
+
+
 
 
 
