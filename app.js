@@ -1,202 +1,149 @@
-// ================================
-// CŒUR SENGHOR IA
-// Connexion application -> serveur
-// ================================
+// ===============================
+// SENGHOR IA - CONTROLE PRINCIPAL
+// ===============================
 
 
-const boutonCreation = document.querySelector(".create");
+// Bouton créer vidéo
+
+let boutonCreation = document.querySelector(".create");
 
 
+if(boutonCreation){
 
-boutonCreation.onclick = async function(){
+boutonCreation.onclick = function(){
+
+let prompt = document.querySelector("#prompt").value;
 
 
-let texte = document.querySelector("#prompt").value;
+if(prompt.trim() === ""){
 
-
-
-if(texte.trim() === ""){
-
-alert("Décris ta vidéo d'abord");
+alert("Décris ta vidéo avant de continuer");
 
 return;
 
 }
 
 
+// Sauvegarde du prompt
 
-
-// Récupération des paramètres
-
-let parametres = localStorage.getItem(
-"SenghorParametres"
+localStorage.setItem(
+"prompt_senghor",
+prompt
 );
 
 
+// Vérifier les paramètres
 
-if(!parametres){
+let choix = localStorage.getItem(
+"choix_video"
+);
 
+
+if(!choix){
 
 alert(
 "Faites vos choix dans les paramètres d'abord"
 );
 
 
-window.location.href="parametres.html";
+window.location.href =
+"parametres.html";
 
 
 return;
 
-
 }
 
 
+// Lancer création
 
-let choix = JSON.parse(parametres);
-
-
-
-
-
-let duree = choix.duree || "1 minute";
-
-let format = choix.format || "16:9";
-
-let voix = choix.voix || "robot calme";
-
-let musique = choix.musique || "sans musique";
-
-let langue = choix.langue || "fr";
-
-
-
-
-
-// Sauvegarde de la demande complète
-
-let demande = {
-
-
-texte: texte,
-
-duree: duree,
-
-format: format,
-
-voix: voix,
-
-musique: musique,
-
-langue: langue
-
+lancerVideo();
 
 };
 
-
-
-localStorage.setItem(
-
-"DemandeVideo",
-
-JSON.stringify(demande)
-
-);
-
-
-
-
-
-alert(
-"🤖 Senghor IA prépare ta vidéo..."
-);
-
-
-
-
-
-try{
-
-
-let url =
-
-"http://localhost:8080/creer?" +
-
-new URLSearchParams(demande);
-
-
-
-
-
-let reponse = await fetch(url);
-
-
-
-let resultat = await reponse.text();
-
-
-
-alert(resultat);
-
-
-
 }
 
-catch(erreur){
 
 
-alert(
-"Erreur connexion au moteur Senghor IA"
+// ===============================
+// LANCEMENT MOTEUR
+// ===============================
+
+function lancerVideo(){
+
+
+let choix =
+JSON.parse(
+localStorage.getItem("choix_video")
 );
 
 
-console.log(erreur);
+alert(
+"🤖 Senghor IA commence la création..."
+);
+
+
+// Envoi au serveur
+
+fetch(
+"http://localhost:8080/creer"
+)
+
+.then(
+response => response.text()
+)
+
+.then(
+resultat => {
+
+
+if(resultat === "VIDEO_OK"){
+
+alert(
+"✅ Vidéo terminée !"
+);
+
+
+}else{
+
+
+alert(
+"❌ Erreur pendant la création"
+);
 
 
 }
 
 
+})
 
-};
+.catch(
 
-
-
-
-
-// Connexion
-
-const connexion = document.querySelector(".connexion");
-
-
-if(connexion){
-
-
-connexion.onclick=function(){
-
+erreur => {
 
 alert(
-"Bienvenue dans Senghor IA"
+"Serveur Senghor IA non actif"
 );
 
+}
 
-};
+);
 
 
 }
 
 
 
+// ===============================
+// CARTES ACCUEIL
+// ===============================
 
 
-
-// Navigation cartes
-
-
-let cartes=document.querySelectorAll(".card");
+let cartes =
+document.querySelectorAll(".card");
 
 
-
-if(cartes.length>=4){
-
+if(cartes.length){
 
 
 cartes[0].onclick=function(){
@@ -206,13 +153,11 @@ window.location.href="assistant.html";
 };
 
 
-
 cartes[1].onclick=function(){
 
 window.location.href="videos.html";
 
 };
-
 
 
 cartes[2].onclick=function(){
@@ -222,7 +167,6 @@ window.location.href="projets.html";
 };
 
 
-
 cartes[3].onclick=function(){
 
 window.location.href="parametres.html";
@@ -230,22 +174,20 @@ window.location.href="parametres.html";
 };
 
 
-
 }
 
 
 
+// ===============================
+// MENU BAS
+// ===============================
 
 
-
-// Barre navigation
-
-
-let menu=document.querySelectorAll("nav button");
+let menu =
+document.querySelectorAll("nav button");
 
 
-
-if(menu.length>=4){
+if(menu.length){
 
 
 menu[0].onclick=function(){
